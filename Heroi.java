@@ -1,15 +1,15 @@
 public abstract class Heroi extends Personagem {
 
     protected int barraEspecial; // Maximo de 30
-    protected int qtdPocaoVida; // começa com 2
-    protected int qtdPocaoEspecial; // começa com 2
+    protected int qtdPocaoVida; // começa com 5
+    protected int qtdPocaoEspecial; // começa com 5
 
     // Método construtor dessa classe
     public Heroi(String nome, int vidaMaxima, int danoBase) {
         super(nome, vidaMaxima, danoBase); // Método construtor da classe Mãe
         this.barraEspecial = 0;
-        this.qtdPocaoVida = 2;
-        this.qtdPocaoEspecial = 2;
+        this.qtdPocaoVida = 5;
+        this.qtdPocaoEspecial = 5;
     }
 
     // Métodos personalizados
@@ -55,8 +55,8 @@ public abstract class Heroi extends Personagem {
 
     // Método de ganhar itens ao derrotar os monstros
     public void ganharItens() {
-        this.qtdPocaoVida += 2;
-        this.qtdPocaoEspecial += 2;
+        this.qtdPocaoVida += 3;
+        this.qtdPocaoEspecial += 3;
     }
 
     // Método para diminuri a barra de especial causada por alguns inimigos

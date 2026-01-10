@@ -34,8 +34,8 @@ public class Batalha {
             System.out.println("3 - para Ataque Esotérico");
             System.out.println("4 - para Habilidade ESPECIAL (Precisa de 30)");
             System.out.println("----------INVENTÁRIO-----------");
-            System.out.println("5 - para Usar poção de vida");
-            System.out.println("6 - para Usar Poção de Especial");
+            System.out.println("5 - para Usar poção de vida /" + jogador.qtdPocaoVida);
+            System.out.println("6 - para Usar Poção de Especial /" + jogador.qtdPocaoEspecial);
             System.out.println("-------------------------------\n");
             int opcao = teclado.nextInt();
 
