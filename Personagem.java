@@ -43,6 +43,7 @@ public abstract class Personagem {
         }
     }
 
+    //Método abstrato 
     public abstract void atacar(Personagem alvo);
 
     // Métodos Especiais Get & Set
