@@ -4,7 +4,7 @@ public abstract class Personagem {
     protected int vidaAtual;
     protected int vidaMaxima;
     protected int danoBase; // Dano padrão se não usar habilidade
-    protected int turnosEnvenenado;// Para a lógica de veneno/gelo (Começa com 0)
+    protected int turnosEnvenenado;// Para a lógica de Veneno/Gelo/Fogo (Começa com 0)
 
     // Método construtor
     public Personagem(String nome, int vidaMaxima, int danoBase) {
@@ -22,7 +22,7 @@ public abstract class Personagem {
         if (this.vidaAtual < 0) {
             this.vidaAtual = 0;
         }
-        System.out.println(nome + " recebeu " + dano + " de dano! Vida restante: " + vidaAtual);
+        System.out.println("\n" + nome + " recebeu " + dano + " de dano! Vida restante: " + vidaAtual);
     }
 
     // Curar: Aumenta a vida mas não deixa passar do máximo
@@ -31,7 +31,7 @@ public abstract class Personagem {
         if (this.vidaAtual > this.vidaMaxima) {
             this.vidaAtual = this.vidaMaxima;
         }
-        System.out.println(nome + " recuperou " + quantidade + " de vida!");
+        System.out.println("\n" + nome + " recuperou " + quantidade + " de vida!");
     }
 
     // Esse loop verifica se alguem esta vivo para saber se a luta acabou
@@ -43,7 +43,7 @@ public abstract class Personagem {
         }
     }
 
-    //Método abstrato 
+    // Método abstrato
     public abstract void atacar(Personagem alvo);
 
     // Métodos Especiais Get & Set

@@ -7,7 +7,6 @@ public abstract class Heroi extends Personagem {
     // Método construtor dessa classe
     public Heroi(String nome, int vidaMaxima, int danoBase) {
         super(nome, vidaMaxima, danoBase); // Método construtor da classe Mãe
-
         this.barraEspecial = 0;
         this.qtdPocaoVida = 2;
         this.qtdPocaoEspecial = 2;
@@ -42,7 +41,7 @@ public abstract class Heroi extends Personagem {
     // O heroi pode encher antes da hora sua barra especial
     public void usarPocaoEspecial() {
         if (qtdPocaoEspecial > 0) {// Valida se tem poção, adiciona 10 pontos a sua barra e remove uma poção do
-                                   // invetario
+                                   // inventário
             this.barraEspecial = this.barraEspecial + 10;
             if (this.barraEspecial > 30) {
                 this.barraEspecial = 30;
@@ -60,14 +59,25 @@ public abstract class Heroi extends Personagem {
         this.qtdPocaoEspecial += 2;
     }
 
-    //Métodos abstratos Habilidades Especificas
-    //Defino 4 tipos de ataque mas não implemento aqui
-    public abstract void ataqueBasico1(Personagem alvo);
-    public abstract void ataqueBasico2(Personagem alvo);
-    public abstract void ataqueStatus(Personagem alvo); //Método para Venenp/Gelo/Fogo
-    public abstract void ataqueEspecial(Personagem alvo); //Ultimate 50 de dano
+    // Método para diminuri a barra de especial causada por alguns inimigos
+    public void diminuirBarraEspecial(int valor) {
+        this.barraEspecial -= valor;
+        if (this.barraEspecial < 0) {
+            this.barraEspecial = 0;
+        }
+    }
 
-    //Métodos especiai Get & Set
+    // Métodos abstratos Habilidades Especificas
+    // Defino 4 tipos de ataque mas não implemento aqui
+    public abstract void ataqueBasico1(Personagem alvo);
+
+    public abstract void ataqueBasico2(Personagem alvo);
+
+    public abstract void ataqueStatus(Personagem alvo); // Método para Venenp/Gelo/Fogo
+
+    public abstract void ataqueEspecial(Personagem alvo); // Ultimate 50 de dano
+
+    // Métodos especiai Get & Set
     public int getBarraEspecial() {
         return barraEspecial;
     }
@@ -91,7 +101,5 @@ public abstract class Heroi extends Personagem {
     public void setQtdPocaoEspecial(int qtdPocaoEspecial) {
         this.qtdPocaoEspecial = qtdPocaoEspecial;
     }
-
-
 
 }
