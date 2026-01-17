@@ -1,18 +1,19 @@
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
         Heroi heroi = null; // Objeto herói inicia vazio
 
-        System.out.println("\n--- Bem-vindo ao RPG Battle Boss ---\n");
+        System.out.println("--- Bem-vindo ao RPG Battle Boss ---\n");
         System.out.print("Digite o nome do seu Herói: ");
         String nomeJogador = teclado.nextLine();// Definição do nome
-
+        limparConsole();
         // Loop para escolher a classe
         while (heroi == null) {
-            System.out.println("\n--- Escolha sua Classe: ---");
+            System.out.println("--- Escolha sua Classe: ---");
             System.out.println("1 - Guerreiro");
             System.out.println("2 - Arqueiro");
             System.out.println("3 - Mago");
@@ -33,16 +34,17 @@ public class Main {
                     heroi = new Barbaro(nomeJogador);
                     break;
                 default:
-                    System.out.println("Opção invalida!");
+                    System.out.println("\nOpção invalida!");
                     break;
             }
         }
+        limparConsole();
 
-        System.out.println("\n--- Herói criado! Bem vindo, " + heroi.nome);
+        System.out.println("--- Herói criado! Bem vindo, " + heroi.nome);
 
         // HUB principal
         while (true) {
-
+  
             System.out.println("\n--- MENU PRINCIPAL ---");
             System.out.println("1 - Lutar contra os Bosses");
             System.out.println("2 - Ver Status (Vida/Itens");
@@ -53,6 +55,7 @@ public class Main {
                 System.out.println("Saindo do jogo...");
                 break;
             } else if (opcao == 2) {// Status e Itens
+                limparConsole();
                 System.out.println("\n--- ATRIBUTOS ---");
                 System.out.println("Herói: " + heroi.nome);
                 System.out.println("Vida: " + heroi.vidaAtual + "/" + heroi.vidaMaxima);
@@ -61,6 +64,7 @@ public class Main {
                 System.out.println("Poções de Vida: " + heroi.qtdPocaoVida);
                 System.out.println("Poções de Especial: " + heroi.qtdPocaoEspecial);
             } else if (opcao == 1) {// Menu de Monstros
+                limparConsole();
                 System.out.println("\n--- ESCOLHA SEU OPONENTE ---");
                 System.out.println("1 - Hydra");
                 System.out.println("2 - Ciclope");
@@ -84,7 +88,7 @@ public class Main {
                         monstro = new EspiritoFogo();
                         break;
                     default:
-                        System.out.println("Opção invalida!");
+                        System.out.println("\nOpção invalida!");
                 }
 
                 if (monstro != null) {
@@ -94,5 +98,10 @@ public class Main {
             }
 
         }
+    }
+
+    public static void limparConsole() { // Método para limpar o console
+        System.out.println("\033[H\033[2J");
+        System.out.flush();
     }
 }

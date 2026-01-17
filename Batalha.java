@@ -5,12 +5,13 @@ public class Batalha {
     public static void iniciar(Heroi jogador, Monstro inimigo) {
 
         Scanner teclado = new Scanner(System.in);
-
-        System.out.println("\n==========================================");
-        System.out.println("  BATTLE START: (||) " + jogador.getNome() + " vs <||> " + inimigo.getNome() + "   ");
-        System.out.println("==========================================");
-
         while (jogador.estaVivo() && inimigo.estaVivo()) {
+
+            limparConsole();
+
+            System.out.println("\n==========================================");
+            System.out.println("  BATTLE START: (||) " + jogador.getNome() + " vs <||> " + inimigo.getNome() + "   ");
+            System.out.println("==========================================");
 
             // Checagem do Efeitos / Veneno, Gelo e Fogo
             if (jogador.turnosEnvenenado > 0) {
@@ -62,6 +63,7 @@ public class Batalha {
                     System.out.println("\n*** Opção Invalida!! ***");
                     break;
             }
+            tempoDeJogo(5000);
 
             // Verifica se o monstro esta vivo antes dele atacar
             if (inimigo.vidaAtual <= 0) {
@@ -75,12 +77,15 @@ public class Batalha {
             System.out.println("-----------------------------");
             System.out.println("\n<||> Vez do " + inimigo.nome + "...");
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1000);
             } catch (Exception e) {
             } // Pausa dramática
             inimigo.atacar(jogador);// IA decide o ataque
             System.out.println("-------------------------------------------");
-
+            try {
+                Thread.sleep(7000);
+            } catch (Exception e) {
+            }
             // Verifica se o jogador ainda esta vivo
             if (!jogador.estaVivo()) {
                 break;
@@ -103,5 +108,17 @@ public class Batalha {
             System.exit(0); // Fecha o jogo
         }
 
+    }
+
+    public static void tempoDeJogo(int valor) {
+        try {
+            Thread.sleep(valor);
+        } catch (Exception e) {
+        }
+    }
+
+    public static void limparConsole() {
+        System.out.println("\033[H\033[2J");
+        System.out.flush();
     }
 }
